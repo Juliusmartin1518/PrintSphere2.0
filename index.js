@@ -1092,6 +1092,7 @@ var vite_config_default = defineConfig({
       )
     ] : []
   ],
+  base: "/PrintSphere2.0/",
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
