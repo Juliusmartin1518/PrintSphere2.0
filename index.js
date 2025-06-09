@@ -1102,8 +1102,15 @@ var vite_config_default = defineConfig({
   },
   root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
-    emptyOutDir: true
+    outDir: path.resolve(import.meta.dirname, "dist"),
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, "client/index.html"),
+        notFound: path.resolve(__dirname, "client/index.html")
+        // serve same file as 404
+      }
+    }
   }
 });
 
