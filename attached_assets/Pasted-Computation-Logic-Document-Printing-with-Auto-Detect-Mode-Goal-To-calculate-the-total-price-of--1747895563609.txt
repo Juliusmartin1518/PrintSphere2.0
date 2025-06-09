@@ -1,0 +1,84 @@
+Computation Logic: Document Printing with Auto Detect Mode
+🎯 Goal:
+To calculate the total price of a printed document based on the number of colored and black-and-white (B&W) pages, the paper type, and the number of copies, while showing a detailed per-page breakdown.
+
+📥 Scenario (User Input + Auto Detection Results)
+Input	Value
+Color Pages Detected	3
+B&W Pages Detected	4
+Total Pages	7
+Paper Type	Glossy (as selected)
+Copies	2
+
+🔢 Step-by-Step Logic
+✅ 1. Define Rate Variables
+These can either be hardcoded for now or fetched dynamically from the admin-configured settings.
+
+js
+Copy
+Edit
+const colorPageRate = 2.00;        // e.g., ₱2 per colored page
+const blackPageRate = 1.00;        // e.g., ₱1 per black page
+const paperTypeRates = {
+  regular: 0.00,
+  glossy: 1.00,
+  matte: 1.50
+};
+✅ 2. Read Values from Inputs and Detection Logic
+js
+Copy
+Edit
+const colorPages = 3;
+const blackPages = 4;
+const totalPages = colorPages + blackPages;
+
+const copies = 2;
+const selectedPaperType = "glossy";
+const paperRate = paperTypeRates[selectedPaperType];
+✅ 3. Compute Cost per Page Type
+js
+Copy
+Edit
+const totalColorCost = colorPages * (colorPageRate + paperRate);
+const totalBlackCost = blackPages * (blackPageRate + paperRate);
+✅ 4. Compute Total for One Copy
+js
+Copy
+Edit
+const totalPerPage = totalColorCost + totalBlackCost;
+✅ 5. Compute Final Total Based on Copies
+js
+Copy
+Edit
+const totalPrice = totalPerPage * copies;
+📊 Example Calculation Output
+Assume:
+
+₱2 per color page
+
+₱1 per B&W page
+
+₱1 extra per page for Glossy paper
+
+2 copies
+
+yaml
+Copy
+Edit
+Colored Pages: 3 × (2 + 1) = ₱9.00  
+B&W Pages: 4 × (1 + 1)     = ₱8.00  
+Total Per Copy             = ₱17.00  
+Copies: 2 × ₱17.00         = ₱34.00
+🖥️ Final Output to Show on UI
+yaml
+Copy
+Edit
+----------------------------------------
+Document Print Summary:
+Paper Type: Glossy
+Colored Pages: 3 × ₱3.00 = ₱9.00
+Black & White Pages: 4 × ₱2.00 = ₱8.00
+Total Per Copy: ₱17.00
+Copies: 2
+----------------------------------------
+Total Price: ₱34.00

@@ -1,0 +1,167 @@
+📘 Product Requirements Document (PRD)
+🏷️ Product Name:
+PrintSphere POS
+
+🧩 Project Overview:
+PrintSphere POS is a role-based Point-of-Sale and operations management system designed specifically for printing shops. It streamlines service entry, order processing, inventory control, and reporting for three core roles: Admin, Cashier, and Staff. The system supports both dynamic service pricing and fixed-rate item handling.
+
+👥 User Roles and Access Levels
+Role	Dashboard Access	Description
+Admin	Full Access	Oversees all modules, manages services, inventory, users, expenses, and reports
+Cashier	POS & Order Management	Handles service selection, payment processing, and customer receipts
+Staff	Production Queue Access	Tracks and updates order progress, manages material use
+
+🔑 Authentication & Access Control
+Secure login with username/password
+
+Role-based dashboard redirection
+
+Session-based access control
+
+Logout button with session timeout logic
+
+Audit logging (Admin view of user activities)
+
+🧩 Core Modules & Functional Requirements
+1. 🧾 Order Management & POS (Cashier + Staff)
+Features:
+Walk-in order creation
+
+Add service (dynamic or standard)
+
+Upload file(s) for print-based services
+
+Auto-generate job number and estimated queue position
+
+View and update order status:
+
+Pending → In Progress → Ready → Completed
+
+2. 💸 Sales and Payments (Cashier)
+Order summary view
+
+Apply optional discounts (fixed or percentage)
+
+Payment options: Cash, GCash, Card (manual entry)
+
+Generate receipt with:
+
+Shop logo
+
+QR code for order number
+
+Payment breakdown
+
+Option to reprint last invoice
+
+3. 🔧 Printing Services Management (Admin + Cashier)
+📌 Service Categories:
+Priority Services – With custom logic and dynamic pricing:
+
+Lamination
+
+Size options: ID size, Big ID (with inches), A4, Long, A5
+
+Each size has fixed pricing
+
+Document Printing
+
+Select paper size (A4, Letter, Long, A5)
+
+Input number of copies
+
+Auto-detect color or B&W and picture content
+
+Select paper type: Glossy, Matte, High Quality, Standard
+
+Auto calculate: Rate x Type x Copies
+
+Tarpaulin Printing
+
+Inputs: Height × Width
+
+Auto compute: HxWxRate
+
+Add-ons: Eyelet count, rope/stand option
+
+Standard Services – With fixed rates per quantity:
+
+PVC ID, Mug Printing, Stickers, Invitations, etc.
+
+Features:
+
+Quantity input
+
+Price per unit
+
+Optional discount
+
+Add to cart logic
+
+4. 🛒 Cart System (Cashier)
+Displays itemized order breakdown
+
+Combines both dynamic and standard services
+
+Editable quantities and discounts
+
+Order-level total computation
+
+“Proceed to Payment” workflow
+
+5. 📦 Inventory Management (Admin + Staff)
+Add/Edit/Delete inventory items (e.g., ink, PVC cards, paper)
+
+Monitor current stock levels
+
+Set low-stock thresholds
+
+Stock usage tracking per order/service
+
+6. 💰 Expense Management (Admin)
+Log expenses (material purchases, repairs, etc.)
+
+Categories: Supplies, Equipment, Utilities, Misc.
+
+Attach receipt image/file
+
+View monthly expense summaries
+
+7. 📊 Reports and Analytics (Admin)
+Sales Reports: Daily, Weekly, Monthly
+
+Top Services: Ranked by volume or revenue
+
+Inventory Reports: Usage and restock alerts
+
+Expense Reports: Totals by category and time period
+
+🔎 Non-Functional Requirements
+Mobile-friendly/responsive UI
+
+Secure session control
+
+Clean error handling and input validation
+
+PDF export support for receipts and reports
+
+Support for barcode or QR scanner (optional phase)
+
+🔍 MVP Scope
+Included Features
+Role-based Login
+Order Processing for Walk-ins
+Lamination, Document, and Tarpaulin Pricing Logic
+Standard Add-to-Cart Services
+Payment and Receipt Generation
+Basic Inventory & Expense Tracking
+Sales and Usage Reports
+
+⛔ Excluded from MVP (Future Enhancements)
+Bundled Packages
+
+Branch or Location Management
+
+CRM or Customer Loyalty Programs
+
+Online Booking or Remote Ordering

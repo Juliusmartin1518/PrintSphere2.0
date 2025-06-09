@@ -1,0 +1,105 @@
+ Functional & Technical Issues
+1. ❌ Dynamic Document Price Computation Not Integrated
+✅ What You Have:
+A working standalone price calculator using logic like:
+
+js
+Copy
+Edit
+coloredPages * ₱5 + blackPages * ₱1 + pageCount * (paperType + quality) * copies
+🔴 What’s Missing in the POS:
+Auto-analysis of uploaded PDFs or DOCX files is not embedded in the POS interface.
+
+Page count, color detection, and total computation do not run after upload.
+
+UI elements for displaying page analysis and computed price are not linked.
+
+📌 Sample script you shared is correct, but needs:
+Integration inside the POS service component
+
+Triggered on upload or “Analyze” button click
+
+Display breakdown in the price section
+
+2. ❌ Tarpaulin Upload Not Clickable
+Upload area exists but is not interactive.
+
+No response on click or drag.
+
+File selection dialog does not open.
+
+3. ❌ Add Services Not Visible in POS
+Services created from the Admin panel do not appear in the POS service list.
+
+Likely missing:
+
+Dynamic refresh on POS page
+
+API response update to include new entries
+
+4. ❌ Checkout - No Receipt/Invoice Preview
+On order completion, there is no post-payment receipt.
+
+No option to print, preview, or export.
+
+No reprint from order history or "Done" list.
+
+5. ❌ Orders Tab – React Infinite Render Error
+Error:
+
+vbnet
+Copy
+Edit
+[plugin:runtime-error-plugin] Too many re-renders. React limits the number of renders to prevent an infinite loop.
+This is caused by:
+
+A useEffect or state change updating repeatedly without an exit condition
+
+Possibly in the Orders or Receipt render logic
+
+6. ❌ Missing Customer Registration and Tagging
+Requested Feature:
+A way to:
+
+Register new customers
+
+Select existing ones during checkout
+
+Show their name/contact in the receipt
+
+Expected Flow:
+POS has a “Select/Add Customer” button
+
+Auto-fill if existing customer is found
+
+Store customerId in orders
+
+Show in invoice like:
+
+makefile
+Copy
+Edit
+Customer: John Santos
+Email: john@example.com
+Phone: 09123456789
+🔧 Summary Table
+Area	Status	Issue
+Document Auto Pricing	⚠️ Incomplete	Not integrated in POS; logic is working but not connected
+Tarpaulin Upload	❌ Broken	Upload input is unclickable
+Service Sync in POS	❌ Broken	Newly added services not showing in POS
+Print Receipt After Checkout	❌ Missing	No post-payment receipt/invoice preview
+Orders Page	❌ Broken	React infinite render loop crash
+Customer Tagging & Tracking	❌ Missing	No customer registration or receipt inclusion
+
+💡 Immediate Next Steps You Can Take
+Integrate auto-analyze script into the POS dynamic pricing module.
+
+Fix upload input (ensure it wraps a real <input type="file">).
+
+Add customer select/register modal in POS.
+
+Enable receipt print preview after payment.
+
+Fix React loop in Orders.jsx or useEffect logic.
+
+Adjust backend to return newly created services in API.
